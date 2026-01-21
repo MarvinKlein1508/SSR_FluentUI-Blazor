@@ -6,16 +6,16 @@
 
 <EditForm FormName="login" Model="Input" OnValidSubmit="HandleLogin">
 	<DataAnnotationsValidator />
-	<FluentTextInput @bind-Value="Input.Username" Label="Username" />
+	<FluentTextInput Name="Input.Username" @bind-Value="Input.Username" Label="Username" />
 	<ValidationMessage For="() => Input.Username" />
 	<br />
-	<FluentTextInput @bind-Value="Input.Password" TextInputType="TextInputType.Password" Label="Password" />
+	<FluentTextInput Name="Input.Password" @bind-Value="Input.Password" TextInputType="TextInputType.Password" Label="Password" />
 	<ValidationMessage For="() => Input.Password" />
 	<br />
-	<FluentSwitch @bind-Value="Input.UseLdap" Label="Use LDAP" />
+	<FluentSwitch Name="Input.UseLdap" @bind-Value="Input.UseLdap" Label="Use LDAP" />
 	<ValidationMessage For="() => Input.UseLdap" />
 	<br />
-	<FluentCheckbox @bind-Value="Input.RememberMe" Label="Remember me" />
+	<FluentCheckbox Name="Input.RememberMe" @bind-Value="Input.RememberMe" Label="Remember me" />
 	<ValidationMessage For="() => Input.RememberMe" />
 	<br />
 	<FluentButton Type="ButtonType.Submit">Login</FluentButton>
