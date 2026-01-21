@@ -1,0 +1,38 @@
+﻿@page "/fluentui"
+
+<PageTitle>FluentUI</PageTitle>
+
+<h1>Form with FluentUI</h1>
+
+<EditForm FormName="login" Model="Input" OnValidSubmit="HandleLogin">
+	<DataAnnotationsValidator />
+	<FluentTextInput @bind-Value="Input.Username" Label="Username" />
+	<ValidationMessage For="() => Input.Username" />
+	<br />
+	<FluentTextInput @bind-Value="Input.Password" TextInputType="TextInputType.Password" Label="Password" />
+	<ValidationMessage For="() => Input.Password" />
+	<br />
+	<FluentSwitch @bind-Value="Input.UseLdap" Label="Use LDAP" />
+	<ValidationMessage For="() => Input.UseLdap" />
+	<br />
+	<FluentCheckbox @bind-Value="Input.RememberMe" Label="Remember me" />
+	<ValidationMessage For="() => Input.RememberMe" />
+	<br />
+	<FluentButton Type="ButtonType.Submit">Login</FluentButton>
+</EditForm>
+
+@code {
+
+	[SupplyParameterFromForm]
+	public LoginInput Input { get; set; }
+
+	public FluentUI()
+	{
+		Input = new();
+	}
+
+	private void HandleLogin()
+	{
+		Console.WriteLine("Submitted");
+	}
+}

@@ -1,0 +1,48 @@
+﻿@page "/blazor"
+<h2>Form with native Blazor</h2>
+<EditForm Model="Input" FormName="login" OnValidSubmit="HandleLogin">
+	<DataAnnotationsValidator />
+	<ValidationSummary />
+	<label>
+		Username
+		<InputText @bind-Value="Input.Username" />
+	</label>
+
+
+	<label>
+		Password
+		<InputText @bind-Value="Input.Password" type="password" />
+	</label>
+
+
+	<label>
+		USE LDAP
+		<InputCheckbox @bind-Value="Input.UseLdap" />
+		<ValidationMessage For="() => Input.UseLdap" />
+	</label>
+
+	<label>
+		Remember me
+		<InputCheckbox @bind-Value="Input.RememberMe" />
+		<ValidationMessage For="() => Input.RememberMe" />
+	</label>
+
+	<button type="submit">Login</button>
+</EditForm>
+
+
+@code {
+
+	[SupplyParameterFromForm]
+	public LoginInput Input { get; set; }
+
+	public BlazorNative()
+	{
+		Input = new();
+	}
+	
+	private void HandleLogin()
+	{
+		Console.WriteLine("Submitted");
+	}
+}
